@@ -55,7 +55,7 @@ void ASprayBullet::OnBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* O
 		{
 			if (OtherActor->Tags[i] == FName("PaintWall"))
 			{
-				decalRotator = UKismetMathLibrary::NormalizedDeltaRotator(this->GetActorRotation(), FRotator(0.f, 90.f, 90.f));
+				decalRotator = UKismetMathLibrary::NormalizedDeltaRotator(this->GetActorRotation(), FRotator(180.f, 90.f, 90.f));
 				ADecalActor* decal = GetWorld()->SpawnActor<ADecalActor>(this->GetActorLocation(), decalRotator);
 				if (decal)
 				{
