@@ -18,7 +18,7 @@ public:
 	// Sets default values for this actor's properties
 	ASprayBullet();
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* MeshComponent;
 	
 	UPROPERTY()
