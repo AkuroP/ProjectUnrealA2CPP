@@ -111,6 +111,8 @@ void AA2CPPCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &AA2CPPCharacter::OnStartRun);
 	PlayerInputComponent->BindAction("Run", IE_Released, this, &AA2CPPCharacter::OnStopRun);
 	
+	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &AA2CPPCharacter::Crouching);
+	PlayerInputComponent->BindAction("Crouch", IE_Released, this, &AA2CPPCharacter::Uncrouching);
 
 }
 
@@ -177,6 +179,15 @@ void AA2CPPCharacter::MoveRight(float Value)
 	}
 }
 
+void AA2CPPCharacter::Crouching()
+{
+	Crouch();
+}
+
+void AA2CPPCharacter::Uncrouching()
+{
+	UnCrouch();
+}
 
 void AA2CPPCharacter::Interact()
 {

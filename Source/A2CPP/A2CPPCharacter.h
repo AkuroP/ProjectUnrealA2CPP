@@ -129,5 +129,11 @@ public:
 
 	UFUNCTION()
 	void MultipleJump();
+
+	UFUNCTION()
+	void Crouching();
+
+	UFUNCTION()
+	void Uncrouching();
 };
 
