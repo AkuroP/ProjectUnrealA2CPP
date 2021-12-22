@@ -53,8 +53,8 @@ AA2CPPCharacter::AA2CPPCharacter()
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 
 	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
-	walkSpeed = 300.f;
-	runSpeed = 600.f;
+	walkSpeed = 600.f;
+	runSpeed = 900.f;
 
 	jumpHeight = 500.f;
 }
