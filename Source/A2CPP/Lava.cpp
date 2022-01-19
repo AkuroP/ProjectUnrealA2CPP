@@ -33,10 +33,10 @@ void ALava::Tick(float DeltaTime)
 
 void ALava::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-    AA2CPPCharacter* Player = Cast<AA2CPPCharacter>(OtherActor);
-    if (Player == NULL)
+    AA2CPPCharacter* player = Cast<AA2CPPCharacter>(OtherActor);
+    if (player == NULL)
     {
         return;
     }
-    Player->playerLife = 0;
+    player->Respawn(player);
 }

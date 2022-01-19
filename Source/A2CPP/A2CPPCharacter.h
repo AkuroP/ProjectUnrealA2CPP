@@ -35,11 +35,14 @@ public:
 	UPROPERTY()
 	AActor* pickedActor;
 
-	UPROPERTY(EditAnywhere)
-	int playerMaxLife;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float playerMaxLife;
 	
-	UPROPERTY(VisibleAnywhere)
-	int playerLife;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	float playerLife;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int playerLevel;
 
 	UPROPERTY(EditAnywhere, Category = Speed)
 	float walkSpeed;
@@ -60,7 +63,10 @@ public:
 	float jumpHeight;
 	
 	UPROPERTY(EditAnywhere)
-	class ARespawn* Respawn;
+	class ARespawn* respawn;
+	
+	UFUNCTION()
+	void Respawn(AA2CPPCharacter* player);
 
 	/*UPROPERTY()
 	FTransform* bulletTransform;*/
@@ -122,11 +128,12 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-	UFUNCTION()
-	void PlayerHurt(int damage);
-	UFUNCTION()
-	void PlayerHeal(int heal);
-
+	UFUNCTION(BlueprintCallable)
+	void PlayerHurt(float damage);
+	UFUNCTION(BlueprintCallable)
+	void PlayerHeal(float heal);
+	UFUNCTION(BlueprintCallable)
+	void PlayerLevelUp(int level);
 	UFUNCTION()
 	void MultipleJump();
 

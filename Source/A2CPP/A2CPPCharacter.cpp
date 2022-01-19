@@ -55,7 +55,8 @@ AA2CPPCharacter::AA2CPPCharacter()
 	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
 	walkSpeed = 600.f;
 	runSpeed = 900.f;
-
+	playerMaxLife = 100.f;
+	playerLife = 100.f;
 	jumpHeight = 500.f;
 }
 
@@ -63,18 +64,18 @@ void AA2CPPCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	GetCharacterMovement()->MaxWalkSpeed = walkSpeed;
-	playerLife = playerMaxLife;
 	jumpCount = maxJumpCount;
 }
 
 void AA2CPPCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (playerLife <= 0)
-	{
-		AA2CPPCharacter* player = this;
-		Respawn->RespawnPlayer(player);
-	}
+
+}
+
+void AA2CPPCharacter::Respawn(AA2CPPCharacter* player)
+{
+	respawn->RespawnPlayer(player);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -270,14 +271,19 @@ void AA2CPPCharacter::OnStopRun()
 
 
 
-void AA2CPPCharacter::PlayerHurt(int damage)
+void AA2CPPCharacter::PlayerHurt(float damage)
 {
 	playerLife -= damage;
 }
 
-void AA2CPPCharacter::PlayerHeal(int heal)
+void AA2CPPCharacter::PlayerHeal(float heal)
 {
 	playerLife += heal;
+}
+
+void AA2CPPCharacter::PlayerLevelUp(int level)
+{
+	playerLevel += level;
 }
 
 void AA2CPPCharacter::Landed(const FHitResult& Hit)
