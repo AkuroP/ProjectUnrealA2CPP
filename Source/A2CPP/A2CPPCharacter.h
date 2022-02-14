@@ -64,7 +64,7 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	class ARespawn* respawn;
-	
+
 	UFUNCTION()
 	void Respawn(AA2CPPCharacter* player);
 

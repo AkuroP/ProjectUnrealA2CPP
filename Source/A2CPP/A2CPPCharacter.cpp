@@ -274,6 +274,10 @@ void AA2CPPCharacter::OnStopRun()
 void AA2CPPCharacter::PlayerHurt(float damage)
 {
 	playerLife -= damage;
+	if (playerLife <= 0)
+	{
+		Respawn(this);
+	}
 }
 
 void AA2CPPCharacter::PlayerHeal(float heal)
